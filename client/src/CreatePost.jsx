@@ -1,37 +1,47 @@
 import { Button, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function CreatePost() {
 
     const navigate = useNavigate()
-    const [paciente, setPaciente] = useSate({
-        nome: "",
+    const [paciente, setPaciente] = useState({
+        nomePaciente: "",
         laudo: "",
 
     })
 
     const handleChange = (event) => {
 
-        console.log(event.target)
+        const { name, value } = event.target;
 
-
+        setPaciente(prev => {
+            return ({
+                ...prev,
+                [name]: value,
+            })
+        })
     }
+
+    useEffect(() => {
+        console.log(paciente);
+    }, [paciente])
+
     return (
         <div >
             <h1>Create a Post</h1>
             <Form>
                 <Form.Group>
-                    <Form.Control
-                        name="paciente"
-                        value={nome.paciente}
+                    <Form.Control // name e value são passados no handle change como evento
+                        name="nomePaciente"
+                        value={paciente.nome}
                         placeholder="Title"
                         style={{ marginBottom: "1rem" }}
                         onChange={handleChange}
                     />
                     <Form.Control
                         name="laudo"
-                        value={laudo.paciente}
+                        value={paciente.laudo}
                         placeholder="Digite o Laudo"
                         style={{ marginBottom: "1rem" }}
                         onChange={handleChange}
