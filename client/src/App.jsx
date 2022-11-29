@@ -1,0 +1,19 @@
+import { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
+import { Button } from 'react-bootstrap'
+import { useNavigate } from "react-router-dom"
+
+function App() {
+  const navigate = useNavigate()
+
+  return (
+    <div style={{ width: "90%", margin: "auto auto", textAlign: "center" }}>
+
+      <h1>Home Page </h1>
+      <Button style={{ width: "50%" }} onClick={() => navigate("create")}>NEXT</Button>
+    </div>
+  )
+}
+
+export default App
