@@ -1,7 +1,9 @@
 import { Button, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import axios from "axios"
+
+
 function CreatePost() {
 
     const navigate = useNavigate()
@@ -12,31 +14,30 @@ function CreatePost() {
     })
 
     const handleChange = (event) => {
-
         const { name, value } = event.target;
-
-        setPaciente(prev => {
-            return ({
+        setPaciente((prev) => {
+            return {
                 ...prev,
                 [name]: value,
-            })
-        })
-    }
+            };
+        });
+    };
 
-    useEffect(() => {
+    /* useEffect(() => {
         console.log(paciente);
-    }, [paciente])
+    }, [paciente]) */
 
 
     const handleClick = (event) => {
-
         event.preventDefault();
-        axios
-            .post("/create", paciente)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
 
-    }
+        axios.post("http://localhost:3001/create", paciente)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
+
+
+    };
+
     return (
         <div >
             <h1>Create a Post</h1>
@@ -60,16 +61,14 @@ function CreatePost() {
                 <Button
                     style={{ marginBottom: "1rem", width: "100%" }}
                     variant="outline-success"
-                    onClick={(handleClick) => {
-
-                    }}
+                    onClick={handleClick}
 
                 >Adicionar paciente</Button>
             </Form>
             <Button
                 style={{ width: "50%" }}
                 variant="outline-dark"
-                onClick={() => navigate("/")}>
+                onClick={() => navigate(-1)}>
                 BACK
             </Button>
         </div>
