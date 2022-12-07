@@ -35,6 +35,7 @@ function CreatePost() {
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
 
+        navigate("posts")
 
     };
 
