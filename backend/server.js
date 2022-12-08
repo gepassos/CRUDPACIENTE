@@ -37,6 +37,27 @@ app.get("/posts", (req, res) => {
         .catch(err => console.log(err))
 })
 
+app.delete("/delete/:id", (req, res) => {
+    Post.findByIdAndDelete({ _id: req.params.id }).then(doc => console.log(doc))
+        .catch((err) => console.log(err));
+
+
+
+})
+
+app.put("/update/:id", (req, res) => {
+    Post.findByIdAndUpdate(
+        { _id: req.params.id },
+        {
+            nomePaciente: req.body.nomePaciente,
+            laudo: req.body.laudo,
+        }
+    )
+        .then((doc) => console.log(doc))
+        .catch((err) => console.log(err));
+});
+
+
 app.post("/create", (req, res) => {
     Post.create({
         nomePaciente: req.body.nomePaciente,

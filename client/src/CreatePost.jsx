@@ -66,12 +66,7 @@ function CreatePost() {
 
                 >Adicionar paciente</Button>
             </Form>
-            <Button
-                style={{ width: "50%" }}
-                variant="outline-dark"
-                onClick={() => navigate(-1)}>
-                BACK
-            </Button>
+
         </div>
 
     )
