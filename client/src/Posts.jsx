@@ -28,7 +28,7 @@ function Posts() {
     const deletePost = (id) => {
         console.log(id)
 
-        axios.delete(`http://localhost:3001/delete/${id}`).then(res => console.log(res))
+        axios.delete(`http://localhost:3001/posts/delete/${id}`).then(res => console.log(res))
             .catch(err => console.log(err))
         window.location.reload();
 
@@ -60,7 +60,7 @@ function Posts() {
         console.log(updatedPaciente);
 
         axios
-            .put(`http://localhost:3001/update/${updatedPaciente.id}`, updatedPaciente)
+            .put(`http://localhost:3001/posts/update/${updatedPaciente.id}`, updatedPaciente)
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
 
@@ -76,8 +76,8 @@ function Posts() {
                 width: "100%",
                 marginBottom: "1rem"
             }}
-                onClick={() => navigate(-1)}
-                variant="outline-dark"> Back</Button>
+                onClick={() => navigate("../createPost")}
+                variant="outline-secondary"> Criar um paciente</Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

@@ -30,14 +30,17 @@ function CreatePost() {
 
     const handleClick = (event) => {
         event.preventDefault();
-
-        axios.post("http://localhost:3001/create", paciente)
-            .then((res) => console.log(res))
+      
+        if (paciente.laudo.trim() !== "" && paciente.nomePaciente.trim() !== "") {
+          axios
+            .post("http://localhost:3001/posts/create", paciente) // Update the URL to match your server route
+            .then((res) => {
+              console.log(res);
+              navigate("../posts");
+            })
             .catch((err) => console.log(err));
-
-        navigate("posts")
-
-    };
+        } else window.alert("Cadastro inválido")
+      };
 
     return (
         <div >
@@ -65,6 +68,15 @@ function CreatePost() {
                     onClick={handleClick}
 
                 >Adicionar paciente</Button>
+
+                <Button style={{
+                width: "100%",
+                marginBottom: "1rem"
+            }}
+                onClick={() => navigate("../posts")}
+                variant="outline-dark"> Back</Button>
+                
+
             </Form>
 
         </div>

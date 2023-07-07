@@ -11,7 +11,7 @@ function App() {
     <div style={{ width: "90%", margin: "auto auto", textAlign: "center" }}>
 
       <h1>Home Page </h1>
-      <Button style={{ width: "50%" }} onClick={() => navigate("create")}>NEXT</Button>
+      <Button style={{ width: "50%" }} onClick={() => navigate("posts")}>NEXT</Button>
     </div>
   )
 }
